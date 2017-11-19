@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+
 public class MainActivity extends Activity {
     protected static final String ACTIVITY_NAME = "MainActivity";
     @Override
