@@ -13,15 +13,30 @@ import android.widget.EditText;
 public class LoginActivity extends Activity {
     protected static final String ACTIVITY_NAME = "LoginActivity";
     public static final  String MY_PRFS_NAME = "MyPrefsFile";
+    SharedPreferences sharedPref;
+    EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Log.i(ACTIVITY_NAME, "In onCreate()");
+        sharedPref = getPreferences(Context.MODE_PRIVATE);
 
-        final Button button =findViewById(R.id.button2);
-        //final EditText editText = (EditText) findViewById(R.id.editText);
+        if(sharedPref.getString("DefaultEmail", "").equals("")){
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString("DefaultEmail", "email@domain.com");
+            editor.commit();
+        }
+        Log.i(ACTIVITY_NAME, "In onCreate()");
+        Button button =findViewById(R.id.button2);
+        editText = (EditText) findViewById(R.id.textEmailAddress);
+        editText.setText(sharedPref.getString("DefaultEmail", "no email"));
+
+        if(!sharedPref.getString("email", "").equals("")){
+            editText.setText(sharedPref.getString("email", "no email"));
+        }
+
+
 
        //String text = editText.getText().toString();
        // SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
@@ -39,6 +54,12 @@ public class LoginActivity extends Activity {
 
             @Override
             public void onClick(View view) {
+
+                if(!editText.getText().toString().equals("")){
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putString("email", editText.getText().toString());
+                    editor.commit();
+                }
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
             }
