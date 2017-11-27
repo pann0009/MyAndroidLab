@@ -34,6 +34,12 @@
             android:text="@string/chatbutton"
             tools:layout_editor_absoluteX="233dp"
             tools:layout_editor_absoluteY="152dp" />
+
+        <Button
+            android:id="@+id/buttonForWeatherForecast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Weather" />
     </LinearLayout>
 
 
