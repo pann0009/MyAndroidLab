@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Xml;
 import android.view.View;
 import android.widget.ImageView;
@@ -134,9 +135,9 @@ public class WeahterForecast extends Activity {
        @Override
        protected void onPostExecute(String string){
             progressBar.setVisibility(View.INVISIBLE);
-            currentTemp.setText(currentTemprature);
-            maxTemp.setText(max);
-            minTemp.setText(min);
+            currentTemp.setText("Current Temprature : "+ currentTemprature);
+            maxTemp.setText("Max TEmpature : "+max);
+            minTemp.setText("Min Temprature : "+ min);
             weatherImage.setImageBitmap(image);
 
 
@@ -149,13 +150,16 @@ public class WeahterForecast extends Activity {
     }
 
     public static class HttpUtils{
+
         public static Bitmap getImage(URL imageURL) {
+
             HttpURLConnection conn = null;
             try {
                 conn = (HttpURLConnection) imageURL.openConnection();
                 conn.connect();
                 int responsecode= conn.getResponseCode();
                 if(responsecode==200){
+                    
                     return BitmapFactory.decodeStream(conn.getInputStream());
                 }
                 else {
