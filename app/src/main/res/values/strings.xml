@@ -11,4 +11,12 @@
     <string name="cancel">CANCEL</string>
     <string name="chatbutton">Start Chat</string>
     <string name="sendButton">Send</string>
+    <string name="weather">Weather</string>
+    <string name="min">Min</string>
+    <string name="current">Current</string>
+    <string name="title_activity_message_detail">MessageDetail</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Messagae Here</string>
+    <string name="hello_id">Messagae Here</string>
 </resources>

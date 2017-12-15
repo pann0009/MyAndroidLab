@@ -3,6 +3,7 @@ package com.example.gurleen.myandroidlab;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,11 +32,16 @@ public class ChatWindow extends Activity {
     SQLiteDatabase db;
     Cursor c;
     private final String ACTIVITY_NAME = "ChatWindow";
+    private  boolean Tablet;
+    public static String message;
+    public static String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_window);
+        Tablet = findViewById(R.id.frameLayout600)!= null;
+
         chatAdapterHelper = new ChatAdapterHelper(this);
         db = chatAdapterHelper.getWritableDatabase();
 
@@ -69,6 +76,33 @@ public class ChatWindow extends Activity {
 
             }
         });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Log.i(ACTIVITY_NAME, "item from the list view has been clicked");
+                if(Tablet){
+                    // if its in tablet mode you need your sw600dp
+
+                }else{
+                    // in the phone mode
+                    Bundle bundle = new Bundle();
+                    c.moveToPosition(position);
+                    bundle.putString(message, c.getString(c.getColumnIndex(ChatAdapterHelper.KEY_MESSAGE)));
+                    bundle.putString(id, c.getString(c.getColumnIndex(ChatAdapterHelper.KEY_ID)));
+                    Intent intent = new Intent(ChatWindow.this, MessageDetail.class);
+                    intent.putExtras(bundle);
+                    startActivityForResult(intent,1);
+
+
+                }
+
+            }
+        });
+    }
+    protected void onActivityResult(int request, int result, Intent data){
+        Log.i(ACTIVITY_NAME, "in onActivityResults");
+
+
     }
 
     private class ChatAdapter extends ArrayAdapter<String> {
@@ -98,6 +132,9 @@ public class ChatWindow extends Activity {
             return result;
 
 
+        }
+        public long getItemId(int position){
+            return  position;
         }
 
 

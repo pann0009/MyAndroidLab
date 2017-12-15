@@ -11,4 +11,7 @@
     <string name="cancel">CANCEL</string>
     <string name="chatbutton">Chat Shru Kro</string>
     <string name="sendButton">Bhej Do</string>
+    <string name="weather">Weather</string>
+    <string name="min">Min</string>
+    <string name="current">Current</string>
 </resources>

@@ -24,7 +24,7 @@
         android:layout_below="@+id/imageViewWeather"
         android:layout_marginEnd="13dp"
         android:layout_marginTop="94dp"
-        android:text="Current"
+        android:text="@string/current"
         tools:layout_editor_absoluteX="130dp"
         tools:layout_editor_absoluteY="189dp" />
 
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/textViewMaxTemprature"
-        android:text="Min"
+        android:text="@string/min"
         tools:layout_editor_absoluteX="130dp"
         tools:layout_editor_absoluteY="246dp" />
 
