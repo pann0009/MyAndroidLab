@@ -39,7 +39,7 @@ public class ChatWindow extends Activity {
         db = chatAdapterHelper.getWritableDatabase();
 
         arrayList = new ArrayList<String>();
-         c = db.rawQuery("select * from " + ChatAdapterHelper.DATABASE_NAME, new String[]{});
+         c = db.rawQuery("select * from " + chatAdapterHelper.DATABASE_NAME, new String[]{});
         Log.i(ACTIVITY_NAME, "Cursor’s  column count =" + c.getColumnCount());
         c.moveToFirst();
         while (!c.isAfterLast()) {
@@ -52,7 +52,12 @@ public class ChatWindow extends Activity {
         editText = findViewById(R.id.editTextChatWindow);
         sendButton = findViewById(R.id.sendButton);
         messageAdapter = new ChatAdapter(this);
+
+
         listView.setAdapter(messageAdapter);
+
+
+
         sendButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
