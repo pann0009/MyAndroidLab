@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.gurleen.myandroidlab">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,6 +22,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".ListItemActivity" />
+        <activity android:name=".ChatWindow" />
+        <activity android:name=".WeahterForecast" />
+        <activity
+            android:name=".MessageDetail"
+            android:label="@string/title_activity_message_detail"></activity>
     </application>
 
 </manifest>

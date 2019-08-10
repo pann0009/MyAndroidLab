@@ -3,4 +3,15 @@
     <string name="app_name">MyAndroidLab</string>
     <string name="hello_Message">Sat sri Akal</string>
     <string name="button1">main ek button han</string>
+    <string name="Login">Login kro</string>
+    <string name="login_name">Login Nam payo</string>
+    <string name="switch1">Eh ki krda va</string>
+    <string name="dialog_message">do you want to finish the activity</string>
+    <string name="dialog_title">Main Activity</string>
+    <string name="cancel">CANCEL</string>
+    <string name="chatbutton">Chat Shru Kro</string>
+    <string name="sendButton">Bhej Do</string>
+    <string name="weather">Weather</string>
+    <string name="min">Min</string>
+    <string name="current">Current</string>
 </resources>
